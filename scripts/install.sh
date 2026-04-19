@@ -164,10 +164,18 @@ $DL "$ARCHIVE_URL" > "$ARCHIVE" || error "download failed: $ARCHIVE_URL"
 if [ -n "$SHA" ]; then
   info "verifying checksum"
   $DL "$CHECKSUMS_URL" > "checksums.txt" || error "could not download checksums.txt"
-  # Fixed-string match on whitespace + filename so the `.` in version
-  # numbers can't regex-match other entries.
-  expected=$(grep -F "  $ARCHIVE" checksums.txt | awk '{print $1}')
+  # Exact-field match on the filename column. A prior `grep -F "  $ARCHIVE"`
+  # version matched both the archive and its `.sbom.json` sibling (substring
+  # match), returning two hashes and breaking every verified install with
+  # "checksum mismatch". awk comparing field 2 exactly avoids that.
+  expected=$(awk -v f="$ARCHIVE" '$2 == f {print $1}' checksums.txt)
   [ -n "$expected" ] || error "no checksum entry for $ARCHIVE"
+  case "$expected" in
+  *"
+"*)
+    error "multiple checksum matches for $ARCHIVE - checksums.txt is malformed"
+    ;;
+  esac
   actual=$($SHA "$ARCHIVE" | awk '{print $1}')
   if [ "$expected" != "$actual" ]; then
     error "checksum mismatch: expected $expected, got $actual"

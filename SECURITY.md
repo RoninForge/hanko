@@ -2,9 +2,9 @@
 
 ## Scope
 
-hanko is a local CLI tool. It reads plugin manifest files (`plugin.json`, `marketplace.json`) from paths you hand it, validates them against an embedded JSON Schema, and prints a report. It does not open network sockets, does not phone home, does not collect telemetry, does not require elevated privileges, and never writes outside the current working directory (only when `--fix` is passed).
+hanko is a local, read-only CLI tool. It reads plugin manifest files (`plugin.json`, `marketplace.json`) from paths you hand it, validates them against an embedded JSON Schema, and prints a report. It does not open network sockets, does not phone home, does not collect telemetry, does not require elevated privileges, and does not modify any file on your disk.
 
-A security issue is anything that violates the above: network egress, privilege escalation, path traversal during `--fix`, arbitrary code execution during validation, or anything that leaks data off the machine.
+A security issue is anything that violates the above: network egress, privilege escalation, arbitrary code execution during validation, or anything that leaks data off the machine.
 
 ## Reporting a vulnerability
 

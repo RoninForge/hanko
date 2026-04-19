@@ -13,7 +13,7 @@ import (
 func (r *Report) WritePretty(w io.Writer, color bool) {
 	if !r.HasFindings() {
 		if color {
-			fmt.Fprintf(w, "\033[32m✓\033[0m %s: clean\n", displayFile(r))
+			fmt.Fprintf(w, "\033[32mok\033[0m %s: clean\n", displayFile(r))
 		} else {
 			fmt.Fprintf(w, "ok %s: clean\n", displayFile(r))
 		}
