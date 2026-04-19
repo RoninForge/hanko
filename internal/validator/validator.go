@@ -119,10 +119,14 @@ func (v *Validator) Validate(data []byte, opts Options) (*report.Report, error) 
 				r.Add(f)
 			}
 		} else {
+			// This branch is only reachable if the schema library ever
+			// returns a non-ValidationError — effectively an internal
+			// library bug. Use a distinct rule ID so a CI pin on
+			// HANKO000 ("invalid JSON") does not silently swallow it.
 			r.Add(report.Finding{
 				Severity: report.SeverityError,
-				Rule:     "HANKO000",
-				Message:  "schema validation failed: " + err.Error(),
+				Rule:     "HANKO-INTERNAL",
+				Message:  "schema validator returned an unexpected error: " + err.Error(),
 			})
 		}
 	}

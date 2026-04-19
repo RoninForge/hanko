@@ -151,7 +151,7 @@ ARCHIVE="${BIN}_${STRIPPED_VERSION}_${OS}_${ARCH}.tar.gz"
 ARCHIVE_URL="https://github.com/$REPO/releases/download/$VERSION/$ARCHIVE"
 CHECKSUMS_URL="https://github.com/$REPO/releases/download/$VERSION/checksums.txt"
 
-info "hanko $VERSION for $OS/$ARCH → $BIN_DIR_PATH/$BIN"
+info "hanko $VERSION for $OS/$ARCH -> $BIN_DIR_PATH/$BIN"
 
 TMPDIR=$(mktemp -d)
 trap 'rm -rf "$TMPDIR"' EXIT

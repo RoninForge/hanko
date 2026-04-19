@@ -4,6 +4,14 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-04-19
+
+### Fixed
+
+- `action/action.yml`: a misconfigured action (wrong `path:` input, directory without a `.claude-plugin/`) used to crash the step with a Python `JSONDecodeError` traceback because the summary script tried to parse an empty JSON file. Added an explicit guard that bails early and propagates hanko's own exit code so users see hanko's friendly error instead of a Python stack trace.
+- `internal/validator`: the "schema validator returned an unexpected error" branch now emits a distinct `HANKO-INTERNAL` rule ID instead of overloading `HANKO000` ("invalid JSON"). Keeps CI pins on `HANKO000` from silently swallowing internal library bugs.
+- `scripts/install.sh`: replaced a Unicode arrow `→` with `->` in the status line, matching the project's plain-ASCII UI rule applied to pretty output in v0.1.1.
+
 ## [0.1.1] - 2026-04-19
 
 ### Fixed
@@ -31,3 +39,8 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 - `agents` as bare directory rejection with a fix suggestion.
 - `--json` output for CI use.
 - Composite GitHub Action wrapper that appends findings to the workflow run summary.
+
+[Unreleased]: https://github.com/RoninForge/hanko/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/RoninForge/hanko/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/RoninForge/hanko/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/RoninForge/hanko/releases/tag/v0.1.0

@@ -78,6 +78,17 @@ runs:
         exit_code=$?
         set -e
 
+        # When hanko exits with a usage error (exit 2 — bad flag, missing
+        # file, no manifests found under the target dir) it writes to
+        # stderr, not stdout, so $json_out is empty. Running the Python
+        # summary on an empty file would crash with JSONDecodeError and
+        # mask hanko's friendly error behind a confusing traceback. Bail
+        # early and propagate hanko's own exit code instead.
+        if [ ! -s "$json_out" ]; then
+          echo "hanko produced no JSON output (exit $exit_code). Check the step log above for hanko's error message." >&2
+          exit $exit_code
+        fi
+
         # Summary: count errors and warnings per-report. `$json_out` is
         # passed as a positional arg rather than interpolated into the
         # Python source so filenames with quotes or spaces are safe.
