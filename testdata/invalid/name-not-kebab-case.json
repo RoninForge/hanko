@@ -1,0 +1,6 @@
+{
+  "name": "MyPlugin",
+  "version": "1.0.0",
+  "description": "Fails: plugin name is PascalCase, not kebab-case",
+  "author": { "name": "Test" }
+}

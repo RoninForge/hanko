@@ -1,0 +1,7 @@
+{
+  "name": "bad-agents-directory",
+  "version": "1.0.0",
+  "description": "Fails: agents as bare directory path",
+  "author": { "name": "Test" },
+  "agents": "./agents/"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "path-traversal",
+  "version": "1.0.0",
+  "description": "Fails: path traverses above plugin root",
+  "author": { "name": "Test" },
+  "agents": ["../shared/agents/reviewer.md"]
+}

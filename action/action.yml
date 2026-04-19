@@ -1,0 +1,136 @@
+name: hanko
+description: Validate Claude Code plugin manifests before submission
+author: RoninForge
+branding:
+  icon: check-circle
+  color: orange
+
+inputs:
+  path:
+    description: Path to a plugin directory or a specific manifest file. Defaults to the repository root.
+    required: false
+    default: .
+  marketplace:
+    description: Layer a marketplace-specific rule set on top of the base schema. One of anthropic, buildwithclaude, cc-marketplace, claudemarketplaces. Empty runs base rules only.
+    required: false
+    default: ''
+  kind:
+    description: Override manifest kind detection. One of plugin, marketplace. Leave empty to auto-detect.
+    required: false
+    default: ''
+  version:
+    description: Pin a hanko version (example v0.1.0). Defaults to the latest release.
+    required: false
+    default: ''
+  fail-on-warnings:
+    description: If true, warnings count as failures.
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Install hanko
+      shell: bash
+      env:
+        HANKO_VERSION: ${{ inputs.version }}
+        # github.action_ref is the tag or SHA the caller used when
+        # they wrote `uses: RoninForge/hanko/action@v0.1.0`. Pinning
+        # the install.sh fetch to the same ref ensures the action
+        # and the installer ship together. Using main would let a
+        # future main break every pinned caller.
+        HANKO_ACTION_REF: ${{ github.action_ref }}
+      run: |
+        set -eu
+        # Fall back to `main` only when action_ref is empty, which
+        # happens for local composite dev-loops. In real workflow
+        # runs the ref is always set.
+        ref="${HANKO_ACTION_REF:-main}"
+        curl -fsSL "https://raw.githubusercontent.com/RoninForge/hanko/${ref}/scripts/install.sh" \
+          | BIN_DIR="$HOME/.local/bin" sh
+        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+    - name: Run hanko
+      shell: bash
+      env:
+        HANKO_PATH: ${{ inputs.path }}
+        HANKO_MARKETPLACE: ${{ inputs.marketplace }}
+        HANKO_KIND: ${{ inputs.kind }}
+        HANKO_FAIL_ON_WARNINGS: ${{ inputs.fail-on-warnings }}
+      run: |
+        set -eu
+
+        # Build the argv as a bash array so spaces or shell metacharacters
+        # in inputs cannot split or reinterpret into extra arguments.
+        if [ -n "$HANKO_MARKETPLACE" ]; then
+          args=(submit-check --marketplace "$HANKO_MARKETPLACE")
+        else
+          args=(check)
+        fi
+        if [ -n "$HANKO_KIND" ]; then
+          args+=(--kind="$HANKO_KIND")
+        fi
+
+        # Always emit JSON so the summary step can parse it.
+        json_out="$RUNNER_TEMP/hanko.json"
+        set +e
+        hanko "${args[@]}" --json "$HANKO_PATH" > "$json_out"
+        exit_code=$?
+        set -e
+
+        # Summary: count errors and warnings per-report. `$json_out` is
+        # passed as a positional arg rather than interpolated into the
+        # Python source so filenames with quotes or spaces are safe.
+        {
+          echo "## hanko"
+          echo
+          echo "\`$(hanko version)\`"
+          echo
+          python3 - "$json_out" <<'PY'
+        import json, sys
+
+        path = sys.argv[1]
+        with open(path) as f:
+            reports = json.load(f)
+
+        total_e = total_w = 0
+        for r in reports:
+            errs = sum(1 for f in r.get("findings", []) if f["severity"] == "error")
+            warns = sum(1 for f in r.get("findings", []) if f["severity"] == "warning")
+            total_e += errs
+            total_w += warns
+            print(f'### `{r.get("file","<stdin>")}` ({r.get("kind","")})')
+            if r.get("marketplace"):
+                print(f'Marketplace overlay: `{r["marketplace"]}`')
+            if not r.get("findings"):
+                print("Clean.")
+                print()
+                continue
+            print()
+            print("| Severity | Rule | Path | Message |")
+            print("|---|---|---|---|")
+            for f in r["findings"]:
+                msg = f["message"].replace("|", "\\|")
+                p = f.get("path","").replace("|","\\|")
+                print(f'| {f["severity"]} | `{f["rule"]}` | `{p}` | {msg} |')
+            print()
+
+        print(f"**Totals:** {total_e} error(s), {total_w} warning(s)")
+        PY
+        } >> "$GITHUB_STEP_SUMMARY"
+
+        if [ "$HANKO_FAIL_ON_WARNINGS" = "true" ]; then
+          warn_count=$(python3 - "$json_out" <<'PY'
+        import json, sys
+        with open(sys.argv[1]) as f:
+            reports = json.load(f)
+        print(sum(1 for r in reports for f in r.get('findings', []) if f['severity'] == 'warning'))
+        PY
+        )
+          if [ "$warn_count" != "0" ]; then
+            echo "hanko: $warn_count warning(s) and fail-on-warnings=true"
+            exit 1
+          fi
+        fi
+
+        exit $exit_code

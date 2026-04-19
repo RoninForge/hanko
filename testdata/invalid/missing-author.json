@@ -1,0 +1,5 @@
+{
+  "name": "no-author",
+  "version": "1.0.0",
+  "description": "Warns: missing author (error under --marketplace=anthropic)"
+}

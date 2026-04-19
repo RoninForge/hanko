@@ -1,0 +1,8 @@
+{
+  "name": "acme-plugins",
+  "owner": { "name": "Acme Corp" },
+  "plugins": [
+    { "name": "foo", "source": "./plugins/foo" },
+    { "name": "foo", "source": { "source": "github", "repo": "acme/foo-alt" } }
+  ]
+}

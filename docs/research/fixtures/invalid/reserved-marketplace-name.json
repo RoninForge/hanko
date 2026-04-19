@@ -1,0 +1,14 @@
+{
+  "_why_invalid": "Marketplace name 'claude-code-plugins' is explicitly listed in the official plugin-marketplaces docs as reserved for Anthropic. Error from CLI: 'Invalid schema: name: Marketplace name cannot impersonate official Anthropic/Claude marketplaces. Names containing official, anthropic, or claude in official-sounding combinations are reserved.' Reserved list (per https://code.claude.com/docs/en/plugin-marketplaces#marketplace-schema): claude-code-marketplace, claude-code-plugins, claude-plugins-official, anthropic-marketplace, anthropic-plugins, agent-skills, knowledge-work-plugins, life-sciences. Impersonating names like 'official-claude-plugins' and 'anthropic-tools-v2' are also blocked (see anthropics/claude-code#18232, #14145).",
+  "name": "claude-code-plugins",
+  "owner": {
+    "name": "Acme Corp",
+    "email": "dev@acme.example"
+  },
+  "plugins": [
+    {
+      "name": "my-plugin",
+      "source": "./plugins/my-plugin"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "duplicate-hooks",
+  "version": "1.0.0",
+  "description": "Fails: redundantly declares standard hooks/hooks.json",
+  "author": { "name": "Test" },
+  "hooks": "./hooks/hooks.json"
+}

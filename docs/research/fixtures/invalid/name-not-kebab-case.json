@@ -1,0 +1,6 @@
+{
+  "_why_invalid": "Plugin name 'MyPlugin' is not kebab-case. Docs say names must be 'kebab-case, no spaces'. The CLI is lenient and may let camelCase pass (see hesreallyhim/claude-code-json-schema FIXTURE-EVIDENCE: 'CLI validates camelCase plugin names as pass') but Claude.ai marketplace sync rejects non-kebab-case names (see /plugin validate warning in official docs: 'Plugin name x is not kebab-case. Claude Code accepts other forms, but the Claude.ai marketplace sync rejects them.').",
+  "name": "MyPlugin",
+  "version": "1.0.0",
+  "description": "Fails: plugin name is PascalCase, not kebab-case"
+}

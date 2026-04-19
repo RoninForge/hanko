@@ -1,0 +1,7 @@
+{
+  "_why_invalid": "Uses '../shared/agents' which traverses above the plugin root. The official docs state explicitly (plugins-reference section 'Path traversal limitations'): 'Installed plugins cannot reference files outside their directory. Paths that traverse outside the plugin root (such as ../shared-utils) will not work after installation because those external files are not copied to the cache.' Also explicitly forbidden in the unofficial schema via pattern 'not: ..'.",
+  "name": "path-traversal",
+  "version": "1.0.0",
+  "description": "Fails: path traverses above plugin root",
+  "agents": ["../shared/agents/reviewer.md"]
+}

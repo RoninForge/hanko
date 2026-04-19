@@ -1,0 +1,7 @@
+{
+  "_why_invalid": "The validator rejects 'agents' as a bare directory path. Even as a string starting with './', the validator requires enumerated agent file paths. Error observed in affaan-m/everything-claude-code PLUGIN_SCHEMA_NOTES: 'The validator does not accept directory paths for agents'. See also anthropics/claude-code#44777 for the related '.claude/ prefix' variation.",
+  "name": "bad-agents-directory",
+  "version": "1.0.0",
+  "description": "Fails: agents as bare directory path",
+  "agents": "./agents/"
+}

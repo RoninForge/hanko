@@ -1,0 +1,13 @@
+{
+  "name": "claude-code-plugins",
+  "owner": {
+    "name": "Acme Corp",
+    "email": "dev@acme.example"
+  },
+  "plugins": [
+    {
+      "name": "my-plugin",
+      "source": "./plugins/my-plugin"
+    }
+  ]
+}

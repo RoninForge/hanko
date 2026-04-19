@@ -1,0 +1,7 @@
+{
+  "_why_invalid": "Declares hooks: './hooks/hooks.json' which conflicts with Claude Code v2.1+ auto-loading of hooks/hooks.json by convention. CLI runtime error: 'Duplicate hooks file detected: ./hooks/hooks.json resolves to already-loaded file. The standard hooks/hooks.json is loaded automatically, so manifest.hooks should only reference additional hook files.' Source: affaan-m/everything-claude-code/.claude-plugin/PLUGIN_SCHEMA_NOTES.md, verified in commit history showing repeated fix/revert cycles (22ad036 ADD / a7bc5f2 REMOVE / 779085e ADD / e3a1306 REMOVE). This is a MANIFEST-LEVEL footgun Hanko can catch before submission.",
+  "name": "duplicate-hooks",
+  "version": "1.0.0",
+  "description": "Fails: redundantly declares standard hooks/hooks.json",
+  "hooks": "./hooks/hooks.json"
+}
