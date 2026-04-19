@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - "v[0-9]+.[0-9]+.[0-9]+*"  # only exact semver tags trigger a release; floating aliases like `v0` are moved by hand without re-running goreleaser
 
 permissions:
   contents: write
