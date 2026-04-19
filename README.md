@@ -3,7 +3,6 @@
 Validate Claude Code plugin manifests before you submit them.
 
 [![CI](https://github.com/RoninForge/hanko/actions/workflows/ci.yml/badge.svg)](https://github.com/RoninForge/hanko/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/RoninForge/hanko)](https://goreportcard.com/report/github.com/RoninForge/hanko)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 hanko is a single-binary Go CLI that reads your `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`, validates them against the schema extracted from Anthropic's plugin docs, and catches the common footguns that make marketplace submission fail: reserved marketplace names, duplicate hooks declarations, `agents` set to a bare directory string, path traversal, and more.
