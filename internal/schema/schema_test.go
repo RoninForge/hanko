@@ -23,4 +23,3 @@ func TestEmbedsAreValidJSON(t *testing.T) {
 		t.Errorf("marketplace.schema.json is not valid JSON: %v", err)
 	}
 }
-

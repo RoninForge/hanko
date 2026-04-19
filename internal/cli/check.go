@@ -23,7 +23,7 @@ func (f *commonFlags) register(cmd *cobra.Command) {
 	cmd.Flags().BoolVar(&f.color, "color", ttyColor(), "colorize the pretty output (auto-detected from TTY)")
 }
 
-func newCheckCmd(stdout, stderr io.Writer) *cobra.Command {
+func newCheckCmd(stdout, _ io.Writer) *cobra.Command {
 	var flags commonFlags
 	var kindFlag string
 	cmd := &cobra.Command{
@@ -47,7 +47,7 @@ the filename is non-standard.`,
 			if err != nil {
 				return err
 			}
-			return emit(stdout, stderr, reports, flags)
+			return emit(stdout, reports, flags)
 		},
 	}
 	flags.register(cmd)
@@ -55,7 +55,7 @@ the filename is non-standard.`,
 	return cmd
 }
 
-func newSubmitCheckCmd(stdout, stderr io.Writer) *cobra.Command {
+func newSubmitCheckCmd(stdout, _ io.Writer) *cobra.Command {
 	var flags commonFlags
 	var marketplace string
 	var kindFlag string
@@ -80,7 +80,7 @@ claudemarketplaces. Unknown names fall back to the base rules.`,
 			if err != nil {
 				return err
 			}
-			return emit(stdout, stderr, reports, flags)
+			return emit(stdout, reports, flags)
 		},
 	}
 	flags.register(cmd)
@@ -175,10 +175,11 @@ func resolveKind(path, override string) (validator.Kind, error) {
 	}
 }
 
-// emit writes the reports to stdout/stderr in the requested format and
-// returns an error that encodes the exit code (non-nil if any report has
-// errors, so cobra exits with a failure).
-func emit(stdout, stderr io.Writer, reports []*report.Report, flags commonFlags) error {
+// emit writes the reports to stdout in the requested format and returns
+// ErrValidationFailed if any report has errors, so Execute() can map it
+// to exit code 1. (stderr writes happen in Execute itself, not here, so
+// pretty output and the error line are never interleaved.)
+func emit(stdout io.Writer, reports []*report.Report, flags commonFlags) error {
 	anyErr := false
 	if flags.json {
 		// Always emit a top-level array, even for single-file runs, so

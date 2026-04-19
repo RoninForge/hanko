@@ -18,7 +18,6 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 
-
 // Kind identifies which embedded schema to apply.
 type Kind = schema.Kind
 
@@ -222,4 +221,3 @@ func leafMessage(e *jsonschema.ValidationError) string {
 	}
 	return msg
 }
-

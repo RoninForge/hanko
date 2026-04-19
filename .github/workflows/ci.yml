@@ -17,6 +17,12 @@ jobs:
   test:
     name: Test ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    # Use bash on every OS so Windows PowerShell does not mis-parse the
+    # `-coverprofile=X` flag (it attempts to load X as a package when
+    # pwsh is the default shell).
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
