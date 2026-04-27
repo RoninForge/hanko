@@ -4,6 +4,12 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-04-27
+
+### Changed
+
+- `action.yml` `name:` field renamed from `hanko` to `Hanko Plugin Validator` so the Action passes GitHub Marketplace's global-uniqueness check (`hanko` collides with existing GitHub user / org names). Repo name, `uses: RoninForge/hanko@v0` consumption path, branding, and binary name are unchanged.
+
 ## [0.2.0] - 2026-04-27
 
 ### Changed

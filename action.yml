@@ -1,4 +1,4 @@
-name: hanko
+name: Hanko Plugin Validator
 description: Validate Claude Code plugin manifests before submission
 author: RoninForge
 branding:
