@@ -15,6 +15,12 @@ The name: **判子 (hanko)** is the personal seal stamped on official Japanese d
 curl -fsSL https://roninforge.org/hanko/install.sh | sh
 ```
 
+Via Homebrew (macOS, Linux):
+
+```sh
+brew install roninforge/tap/hanko
+```
+
 Or grab a binary from the [latest release](https://github.com/RoninForge/hanko/releases/latest). Prefer Go install:
 
 ```sh
