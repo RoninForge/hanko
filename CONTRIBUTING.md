@@ -62,7 +62,7 @@ internal/schema/   embedded JSON schemas (//go:embed)
 internal/rules/    Go-coded rules beyond JSON Schema (reserved names, duplicate hooks, etc.)
 internal/validator/ schema + rules orchestrator
 internal/report/   error formatting (pretty / json)
-action/            composite GitHub Action wrapper
+action.yml         composite GitHub Action wrapper (at repo root for Marketplace)
 scripts/           install script and helpers
 testdata/          valid and invalid fixtures driving tests
 ```

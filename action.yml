@@ -35,7 +35,7 @@ runs:
       env:
         HANKO_VERSION: ${{ inputs.version }}
         # github.action_ref is the tag or SHA the caller used when
-        # they wrote `uses: RoninForge/hanko/action@v0.1.0`. Pinning
+        # they wrote `uses: RoninForge/hanko@v0.2.0`. Pinning
         # the install.sh fetch to the same ref ensures the action
         # and the installer ship together. Using main would let a
         # future main break every pinned caller.

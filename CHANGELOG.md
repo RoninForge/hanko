@@ -4,6 +4,12 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-04-27
+
+### Changed
+
+- **BREAKING:** moved `action.yml` from `action/action.yml` to the repository root. The composite Action now lives at the path GitHub's Actions Marketplace expects, which lets hanko be discovered, ranked, and installed from the Marketplace UI rather than only by direct repo reference. Update consuming workflows from `uses: RoninForge/hanko/action@v0` to `uses: RoninForge/hanko@v0`. The `v0` floating tag has been re-pointed at v0.2.0; pinned references to `v0.1.x/action` continue to resolve from the prior release.
+
 ## [0.1.2] - 2026-04-19
 
 ### Fixed

@@ -63,7 +63,7 @@ See [docs/rules.md](docs/rules.md) for the full list with fix suggestions.
 ## GitHub Action
 
 ```yaml
-- uses: RoninForge/hanko/action@v0
+- uses: RoninForge/hanko@v0
   with:
     path: .
     marketplace: anthropic
