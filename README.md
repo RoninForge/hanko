@@ -93,3 +93,18 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Security
 
 See [SECURITY.md](SECURITY.md).
+
+
+## More from RoninForge
+
+Free, local-first tools for developers working with AI coding assistants. No accounts, MIT licensed.
+
+- [Tsuba](https://roninforge.org/tsuba) - scaffold Claude Code plugins and skills
+- [BudgetClaw](https://roninforge.org/budgetclaw) - local spend monitor for Claude Code
+- [Goei](https://roninforge.org/goei) - unified AI provider cost dashboard
+
+Free web tools (run in your browser, nothing uploaded):
+
+- [GitHub Copilot AI Credits calculator](https://roninforge.org/copilot-credits-calculator) - estimate your monthly credit burn under usage-based billing
+- [Copilot usage CSV analyzer](https://roninforge.org/copilot-csv-analyzer) - break your usage report down by model, day, and SKU
+- [LLM API pricing comparison](https://roninforge.org/llm-pricing) - Claude, GPT, Gemini, DeepSeek, Mistral, and Grok token prices side by side
