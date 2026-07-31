@@ -100,3 +100,5 @@ release:
     ---
 
     **Full changelog**: https://github.com/RoninForge/hanko/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+    **The full rule catalog, what hanko will not do, and the FAQ**: https://roninforge.org/hanko/
