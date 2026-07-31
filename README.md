@@ -9,6 +9,8 @@ hanko is a single-binary Go CLI that reads your `.claude-plugin/plugin.json` and
 
 The name: **判子 (hanko)** is the personal seal stamped on official Japanese documents, the traditional act of approving a submission. Run `hanko check` before you file yours.
 
+The full rule catalog, what hanko deliberately will not do, and the FAQ: **<https://roninforge.org/hanko/>**
+
 ## Install
 
 ```sh
@@ -95,16 +97,23 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 See [SECURITY.md](SECURITY.md).
 
 
+## Docs
+
+- [The full rule catalog and what hanko will not do](https://roninforge.org/hanko/)
+- [How to create a Claude skill](https://roninforge.org/tutorials/how-to-create-a-claude-skill-for-my-cv/)
+
 ## More from RoninForge
 
 Free, local-first tools for developers working with AI coding assistants. No accounts, MIT licensed.
 
-- [Tsuba](https://roninforge.org/tsuba) - scaffold Claude Code plugins and skills
-- [BudgetClaw](https://roninforge.org/budgetclaw) - local spend monitor for Claude Code
-- [Goei](https://roninforge.org/goei) - unified AI provider cost dashboard
+- [Tsuba](https://roninforge.org/tsuba/) - scaffold Claude Code plugins and skills
+- [BudgetClaw](https://roninforge.org/budgetclaw/) - local spend monitor for Claude Code
+- [Goei](https://roninforge.org/goei/) - unified AI provider cost dashboard
 
 Free web tools (run in your browser, nothing uploaded):
 
-- [GitHub Copilot AI Credits calculator](https://roninforge.org/copilot-credits-calculator) - estimate your monthly credit burn under usage-based billing
-- [Copilot usage CSV analyzer](https://roninforge.org/copilot-csv-analyzer) - break your usage report down by model, day, and SKU
-- [LLM API pricing comparison](https://roninforge.org/llm-pricing) - Claude, GPT, Gemini, DeepSeek, Mistral, and Grok token prices side by side
+- [GitHub Copilot AI Credits calculator](https://roninforge.org/copilot-credits-calculator/) - estimate your monthly credit burn under usage-based billing
+- [Copilot usage CSV analyzer](https://roninforge.org/copilot-csv-analyzer/) - break your usage report down by model, day, and SKU
+- [LLM API pricing comparison](https://roninforge.org/llm-pricing/) - Claude, GPT, Gemini, DeepSeek, Mistral, and Grok token prices side by side
+
+hanko is part of [RoninForge.org](https://roninforge.org).
