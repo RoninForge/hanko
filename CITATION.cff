@@ -1,0 +1,26 @@
+# Machine-readable citation metadata. GitHub renders a "Cite this repository" button from this file.
+cff-version: 1.2.0
+title: "RoninForge Hanko"
+message: "If you use this software, please cite it using the metadata in this file."
+type: software
+authors:
+  - name: "RoninForge"
+    email: "jens@rasta.online"
+    website: "https://roninforge.org"
+abstract: >-
+  RoninForge Hanko is a Claude Code plugin manifest validator that catches
+  reserved marketplace names, duplicate hooks declarations, path traversal and
+  schema errors before submission, which the official validator reports
+  opaquely. It ships as a Go command-line tool and a GitHub Action, is MIT
+  licensed, runs entirely on your machine, and requires no API keys.
+url: "https://roninforge.org/hanko"
+repository-code: "https://github.com/RoninForge/hanko"
+license: MIT
+version: v0.2.1
+date-released: 2026-04-27
+keywords:
+  - Claude Code
+  - plugin manifest
+  - schema validation
+  - GitHub Action
+  - command-line tool
