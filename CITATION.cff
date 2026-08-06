@@ -16,8 +16,8 @@ abstract: >-
 url: "https://roninforge.org/hanko"
 repository-code: "https://github.com/RoninForge/hanko"
 license: MIT
-version: v0.2.1
-date-released: 2026-04-27
+version: v0.2.2
+date-released: 2026-08-06
 keywords:
   - Claude Code
   - plugin manifest

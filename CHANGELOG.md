@@ -4,6 +4,23 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-08-06
+
+Documentation and metadata only. The validator itself is unchanged from 0.2.1.
+
+### Added
+
+- `CITATION.cff`, so GitHub renders a "Cite this repository" button and
+  citation tooling can resolve the project without scraping the README.
+- `AGENTS.md`, describing the repository layout and conventions for AI coding
+  agents working in this repo.
+- A Homebrew install path in the README, alongside the existing options.
+
+### Changed
+
+- The README follows the RoninForge README contract, and cross-links the
+  related RoninForge tools.
+
 ## [0.2.1] - 2026-04-27
 
 ### Changed
@@ -52,7 +69,10 @@ All notable changes to hanko are documented here. Format based on [Keep a Change
 - `--json` output for CI use.
 - Composite GitHub Action wrapper that appends findings to the workflow run summary.
 
-[Unreleased]: https://github.com/RoninForge/hanko/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/RoninForge/hanko/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/RoninForge/hanko/compare/v0.2.1...v0.2.2
+[0.2.1]: https://github.com/RoninForge/hanko/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/RoninForge/hanko/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/RoninForge/hanko/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/RoninForge/hanko/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/RoninForge/hanko/releases/tag/v0.1.0
