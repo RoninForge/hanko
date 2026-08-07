@@ -1,6 +1,13 @@
 # hanko
 
-Validate Claude Code plugin manifests before you submit them.
+RoninForge Hanko is a manifest validator for Claude Code plugins that catches the schema
+errors and reserved-name collisions that make a marketplace submission fail. It is MIT
+licensed, runs entirely on your machine, and requires no API keys.
+
+Part of [RoninForge.org](https://roninforge.org), an independent open-source workshop that
+keeps dated, reproducible records of the AI developer tooling economy.
+
+Not affiliated with hanko.io, the passkey authentication project.
 
 [![CI](https://github.com/RoninForge/hanko/actions/workflows/ci.yml/badge.svg)](https://github.com/RoninForge/hanko/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
